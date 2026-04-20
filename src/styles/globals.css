@@ -1,6 +1,4 @@
-/* ─── Google Fonts are loaded in index.html ─────────────────────────────────── */
 
-/* ─── Design tokens ──────────────────────────────────────────────────────────── */
 [data-theme='dark'] {
   --bg:          #06080f;
   --surface:     #0c1018;
@@ -47,7 +45,6 @@
   --row-stripe:  rgba(0, 0, 0, 0.02);
 }
 
-/* ─── Reset & base ────────────────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -72,12 +69,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── Scrollbar ───────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar          { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track    { background: var(--surface); }
 ::-webkit-scrollbar-thumb    { background: var(--border-alt); border-radius: 3px; }
 
-/* ─── Form elements ───────────────────────────────────────────────────────────── */
 input,
 select,
 textarea {
@@ -120,11 +115,9 @@ label {
   color: var(--text-sub);
 }
 
-/* ─── Typography helpers ──────────────────────────────────────────────────────── */
 .font-heading { font-family: 'Rajdhani', sans-serif; }
 .font-mono    { font-family: 'JetBrains Mono', monospace; }
 
-/* ─── Animations ──────────────────────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: none; }
@@ -132,14 +125,12 @@ label {
 
 .fade-in { animation: fadeUp 0.22s ease both; }
 
-/* ─── Layout: App shell ───────────────────────────────────────────────────────── */
 .app-shell {
   display: flex;
   height: 100vh;
   overflow: hidden;
 }
 
-/* ─── Layout: Sidebar ─────────────────────────────────────────────────────────── */
 .sidebar {
   width: 220px;
   flex-shrink: 0;
@@ -245,7 +236,6 @@ label {
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* ─── Layout: Top bar ─────────────────────────────────────────────────────────── */
 .topbar {
   height: 52px;
   background: var(--surface);
@@ -288,7 +278,6 @@ label {
   box-shadow: 0 0 8px rgba(34, 197, 94, 0.55);
 }
 
-/* ─── Layout: Content ─────────────────────────────────────────────────────────── */
 .content-wrapper {
   flex: 1;
   display: flex;
@@ -302,7 +291,6 @@ label {
   padding: 22px 22px 90px;
 }
 
-/* ─── Layout: Mobile nav ──────────────────────────────────────────────────────── */
 .mobile-nav {
   position: fixed;
   bottom: 0;
@@ -339,7 +327,6 @@ label {
 
 .mobile-nav__icon { font-size: 17px; display: block; margin-bottom: 2px; }
 
-/* ─── Component: Badge ────────────────────────────────────────────────────────── */
 .badge {
   display: inline-block;
   padding: 2px 9px;
@@ -363,7 +350,6 @@ label {
 .badge--sent       { background: rgba(56,189,248,.12);  color: #38bdf8; border-color: rgba(56,189,248,.3); }
 .badge--draft      { background: rgba(100,116,139,.15); color: #94a3b8; border-color: rgba(100,116,139,.3); }
 
-/* ─── Component: Button ───────────────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -412,7 +398,6 @@ label {
 }
 .btn--success:hover:not(:disabled) { background: rgba(34,197,94,.22); }
 
-/* ─── Component: Icon button ──────────────────────────────────────────────────── */
 .icon-btn {
   display: inline-flex;
   align-items: center;
@@ -430,7 +415,6 @@ label {
 .icon-btn:hover          { background: var(--clr-accent-bg); color: var(--clr-accent); }
 .icon-btn--danger:hover  { background: rgba(239,68,68,.15);  color: var(--clr-danger);  }
 
-/* ─── Component: KPI card ─────────────────────────────────────────────────────── */
 .kpi-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -476,7 +460,6 @@ label {
   margin-top: 6px;
 }
 
-/* ─── Component: PageHeader ───────────────────────────────────────────────────── */
 .page-header {
   display: flex;
   align-items: center;
@@ -500,7 +483,6 @@ label {
   flex-wrap: wrap;
 }
 
-/* ─── Component: Table ────────────────────────────────────────────────────────── */
 .table-wrap {
   background: var(--card);
   border: 1px solid var(--border);
@@ -547,7 +529,6 @@ label {
   letter-spacing: 0.07em;
 }
 
-/* ─── Component: Pagination ───────────────────────────────────────────────────── */
 .pagination {
   display: flex;
   align-items: center;
@@ -574,7 +555,6 @@ label {
 .pagination__page-btn:hover             { border-color: var(--clr-accent); color: var(--clr-accent); }
 .pagination__page-btn--active           { background: var(--clr-accent-bg); border-color: var(--clr-accent); color: var(--clr-accent); }
 
-/* ─── Component: Search ───────────────────────────────────────────────────────── */
 .search-wrap { position: relative; min-width: 200px; }
 .search-wrap input { padding-left: 30px; }
 .search-icon {
@@ -587,7 +567,6 @@ label {
   font-size: 14px;
 }
 
-/* ─── Component: Modal ────────────────────────────────────────────────────────── */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -662,7 +641,6 @@ label {
   justify-content: flex-end;
 }
 
-/* ─── Component: Form grid ────────────────────────────────────────────────────── */
 .form-grid { display: grid; gap: 13px; }
 .form-grid--2   { grid-template-columns: 1fr 1fr; }
 .form-grid--3   { grid-template-columns: 1fr 1fr 1fr; }
@@ -671,7 +649,6 @@ label {
 
 .form-field { display: flex; flex-direction: column; }
 
-/* ─── Component: Chart card ───────────────────────────────────────────────────── */
 .chart-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -710,7 +687,6 @@ label {
   font-weight: 600;
 }
 
-/* ─── Page: Dashboard ─────────────────────────────────────────────────────────── */
 .dashboard { display: flex; flex-direction: column; gap: 20px; }
 
 .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 13px; }
@@ -773,7 +749,6 @@ label {
   flex-shrink: 0;
 }
 
-/* ─── Page: Dispatch / Kanban ─────────────────────────────────────────────────── */
 .kanban-board {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -897,7 +872,6 @@ label {
   margin-top: 6px;
 }
 
-/* ─── Page: Reports ───────────────────────────────────────────────────────────── */
 .reports-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
 .equip-legend {
@@ -919,10 +893,8 @@ label {
 
 .equip-legend__dot { width: 8px; height: 8px; border-radius: 50%; }
 
-/* ─── Page: Invoices ──────────────────────────────────────────────────────────── */
 .invoices-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 13px; margin-bottom: 20px; }
 
-/* ─── Navbar badge ────────────────────────────────────────────────────────────── */
 .nav-badge {
   background: var(--clr-accent);
   color: #000;
@@ -935,7 +907,6 @@ label {
   margin-left: auto;
 }
 
-/* ─── Theme toggle button ─────────────────────────────────────────────────────── */
 .theme-toggle {
   background: var(--card);
   border: 1px solid var(--border-alt);
@@ -950,7 +921,6 @@ label {
 
 .theme-toggle:hover { border-color: var(--clr-accent); }
 
-/* ─── Utilities ───────────────────────────────────────────────────────────────── */
 .tc-accent   { color: var(--clr-accent) !important; }
 .tc-success  { color: var(--clr-success) !important; }
 .tc-danger   { color: var(--clr-danger) !important; }
@@ -967,7 +937,6 @@ label {
 .fz-13       { font-size: 13px; }
 .fz-14       { font-size: 14px; }
 
-/* ─── Responsive: hide / show ─────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .hide-mobile { display: none !important; }
 

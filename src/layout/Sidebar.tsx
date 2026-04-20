@@ -74,7 +74,6 @@ export default function Sidebar({
       </nav>
 
       <div className="sidebar__footer">
-        <span className="sidebar__version">v2.0 · MySQL</span>
         <button className="theme-toggle" onClick={onThemeToggle}>
           {theme === "dark" ? "☀" : "🌙"}
         </button>
