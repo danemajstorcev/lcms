@@ -1,7 +1,7 @@
-import { type ReactNode } from 'react';
+import { type ReactNode } from "react";
 
 interface TableShellProps {
-  headers:  string[];
+  headers: string[];
   children: ReactNode;
 }
 

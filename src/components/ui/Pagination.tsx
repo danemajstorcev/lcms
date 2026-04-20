@@ -1,8 +1,8 @@
-import Button from './Button';
+import Button from "./Button";
 
 interface PaginationProps {
-  page:    number;
-  total:   number;
+  page: number;
+  total: number;
   setPage: (page: number) => void;
 }
 
@@ -11,7 +11,12 @@ export default function Pagination({ page, total, setPage }: PaginationProps) {
 
   return (
     <div className="pagination">
-      <Button sm variant="ghost" onClick={() => setPage(page - 1)} disabled={page === 1}>
+      <Button
+        sm
+        variant="ghost"
+        onClick={() => setPage(page - 1)}
+        disabled={page === 1}
+      >
         ‹
       </Button>
 
@@ -19,13 +24,18 @@ export default function Pagination({ page, total, setPage }: PaginationProps) {
         <button
           key={n}
           onClick={() => setPage(n)}
-          className={`pagination__page-btn${n === page ? ' pagination__page-btn--active' : ''}`}
+          className={`pagination__page-btn${n === page ? " pagination__page-btn--active" : ""}`}
         >
           {n}
         </button>
       ))}
 
-      <Button sm variant="ghost" onClick={() => setPage(page + 1)} disabled={page === total}>
+      <Button
+        sm
+        variant="ghost"
+        onClick={() => setPage(page + 1)}
+        disabled={page === total}
+      >
         ›
       </Button>
     </div>

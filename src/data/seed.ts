@@ -45,7 +45,6 @@ export const initialInvoices: Invoice[] = [
   { id: 7, num: 'INV-2025-007', lid: 8, bid: 4, amount: 1900, status: 'Draft', due: '2025-05-07', issued: '2025-04-19' },
 ];
 
-// Static monthly data for charts (replace with real API data later)
 export const monthlyChartData = [
   { month: 'Nov', revenue: 18400, profit: 3820, loads: 5 },
   { month: 'Dec', revenue: 22100, profit: 4950, loads: 6 },

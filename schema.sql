@@ -1,12 +1,8 @@
--- ============================================================
---  Load & Carrier Management System (LCMS)
---  MySQL Schema  ·  Corevanta Logistics
--- ============================================================
+
 
 CREATE DATABASE IF NOT EXISTS lcms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE lcms;
 
--- ── BROKERS ──────────────────────────────────────────────────
 CREATE TABLE brokers (
   id         INT           UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name       VARCHAR(120)  NOT NULL,
@@ -18,7 +14,6 @@ CREATE TABLE brokers (
   INDEX idx_mc_number (mc_number)
 ) ENGINE=InnoDB;
 
--- ── CARRIERS ─────────────────────────────────────────────────
 CREATE TABLE carriers (
   id             INT          UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name           VARCHAR(120) NOT NULL,
@@ -34,7 +29,6 @@ CREATE TABLE carriers (
   INDEX idx_equipment (equipment_type)
 ) ENGINE=InnoDB;
 
--- ── LOADS ─────────────────────────────────────────────────────
 CREATE TABLE loads (
   id               INT           UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   load_number      VARCHAR(20)   NOT NULL UNIQUE,          -- e.g. CVL-10041
@@ -65,7 +59,6 @@ CREATE TABLE loads (
   INDEX idx_delivery_date (delivery_date)
 ) ENGINE=InnoDB;
 
--- ── COMPUTED VIEW: profit per load ───────────────────────────
 CREATE OR REPLACE VIEW v_load_profit AS
 SELECT
   l.id,
@@ -92,7 +85,6 @@ FROM loads l
 JOIN brokers  b ON b.id = l.broker_id
 JOIN carriers c ON c.id = l.carrier_id;
 
--- ── COMPUTED VIEW: carrier summary ───────────────────────────
 CREATE OR REPLACE VIEW v_carrier_summary AS
 SELECT
   c.id,
@@ -107,7 +99,6 @@ FROM carriers c
 LEFT JOIN loads l ON l.carrier_id = c.id
 GROUP BY c.id;
 
--- ── COMPUTED VIEW: broker summary ────────────────────────────
 CREATE OR REPLACE VIEW v_broker_summary AS
 SELECT
   b.id,
@@ -120,7 +111,6 @@ FROM brokers b
 LEFT JOIN loads l ON l.broker_id = b.id
 GROUP BY b.id;
 
--- ── SEED DATA ─────────────────────────────────────────────────
 INSERT INTO brokers (name, email, phone, mc_number) VALUES
   ('Echo Global Logistics',   'dispatch@echo.com',    '(312) 555-0101', 'MC-487210'),
   ('Coyote Logistics',        'loads@coyote.com',     '(773) 555-0182', 'MC-521334'),
@@ -146,16 +136,3 @@ VALUES
   ('CVL-10047', 3, 3, 'Minneapolis', 'MN', 'Kansas City',    'MO', '2025-04-18', '2025-04-19', 2400.00, 1900.00, 'In Transit', 39000, 442),
   ('CVL-10048', 4, 2, 'Nashville',   'TN', 'Columbus',       'OH', '2025-04-19', '2025-04-20', 1900.00, 1500.00, 'Pending',    32000, 294);
 
--- ── USEFUL QUERIES ────────────────────────────────────────────
--- Active loads with full join:
--- SELECT * FROM v_load_profit WHERE status IN ('Pending','In Transit') ORDER BY pickup_date;
-
--- Top carriers by profit generated:
--- SELECT carrier_name, SUM(profit) AS total_profit FROM v_load_profit GROUP BY carrier_name ORDER BY total_profit DESC;
-
--- Average margin by broker:
--- SELECT broker_name, ROUND(AVG(margin_pct),2) AS avg_margin FROM v_load_profit GROUP BY broker_name;
-
--- Loads per equipment type this month:
--- SELECT c.equipment_type, COUNT(*) AS loads FROM loads l JOIN carriers c ON c.id=l.carrier_id
--- WHERE MONTH(l.pickup_date)=MONTH(CURDATE()) GROUP BY c.equipment_type;

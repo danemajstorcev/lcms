@@ -1,10 +1,14 @@
 interface SearchInputProps {
-  value:       string;
-  onChange:    (val: string) => void;
+  value: string;
+  onChange: (val: string) => void;
   placeholder?: string;
 }
 
-export default function SearchInput({ value, onChange, placeholder = 'Search…' }: SearchInputProps) {
+export default function SearchInput({
+  value,
+  onChange,
+  placeholder = "Search…",
+}: SearchInputProps) {
   return (
     <div className="search-wrap">
       <span className="search-icon">⌕</span>

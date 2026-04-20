@@ -1,11 +1,9 @@
-// ─── Formatters ──────────────────────────────────────────────────────────────
-
 export function formatCurrency(value: number): string {
-  return '$' + value.toLocaleString('en-US');
+  return "$" + value.toLocaleString("en-US");
 }
 
 export function formatMiles(miles: number): string {
-  return miles.toLocaleString('en-US') + ' mi';
+  return miles.toLocaleString("en-US") + " mi";
 }
 
 export function calcProfit(rate: number, pay: number): number {
@@ -18,14 +16,15 @@ export function calcMargin(rate: number, pay: number): number {
 }
 
 export function marginColor(margin: number): string {
-  if (margin >= 20) return 'var(--clr-success)';
-  if (margin >= 10) return 'var(--clr-warn)';
-  return 'var(--clr-danger)';
+  if (margin >= 20) return "var(--clr-success)";
+  if (margin >= 10) return "var(--clr-warn)";
+  return "var(--clr-danger)";
 }
 
-// ─── Array helpers ────────────────────────────────────────────────────────────
-
-export function findById<T extends { id: number }>(arr: T[], id: number): T | undefined {
+export function findById<T extends { id: number }>(
+  arr: T[],
+  id: number,
+): T | undefined {
   return arr.find((item) => item.id === id);
 }
 

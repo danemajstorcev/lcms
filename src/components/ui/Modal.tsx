@@ -4,11 +4,10 @@ interface ModalProps {
   title:     string;
   subtitle?: string;
   onClose:   () => void;
-  children:  ReactNode;   // should include modal__body + modal__footer
+  children:  ReactNode;   
 }
 
 export default function Modal({ title, subtitle, onClose, children }: ModalProps) {
-  // Close on overlay click only (not on modal itself)
   function handleOverlayClick(e: React.MouseEvent<HTMLDivElement>) {
     if (e.target === e.currentTarget) onClose();
   }
@@ -26,7 +25,6 @@ export default function Modal({ title, subtitle, onClose, children }: ModalProps
           </button>
         </div>
 
-        {/* Form components render modal__body + modal__footer as children */}
         {children}
       </div>
     </div>
